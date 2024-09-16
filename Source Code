@@ -1,0 +1,91 @@
+<nav class="navbar" id="navbar">
+    <div class="navbar-brand">
+        <a class="navbar-item" href="">
+            <img src="/images/Reu James Profile Image.jpg" alt="Logo"
+                style="border-radius: 50%; padding: 0 15px; height: 25px;">
+            <h3 style="line-height: 17px; color: white; font-family: sans-serif;">ReuJames <br> 
+                <span style="font-family: sans-serif; font-size: 13px; color: gray;">Frontend Developer</span>
+            </h3>
+        </a>
+        <div class="navbar-burger burger" data-target="navbarExampleTransparentExample">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+    </div>
+
+    <div id="navbarExampleTransparentExample" class="navbar-menu" style="font-size: 13px;">
+        <div class="navbar-end">
+            <!-- Navigation items here -->
+            <a class="navbar-item" href=""><span>Home</span></a>
+            <div class="navbar-item has-dropdown is-hoverable">
+                <a style="font-weight: bolder;" class="navbar-link is-arrow" onclick="toggleProjects(event)">
+                    Projects
+                </a>
+                <div id="projectsDropdown" class="navbar-dropdown is-boxed" style="display: none;">
+                    <a class="navbar-item" href="">Frontend Development</a>
+                    <a class="navbar-item" href="">Backend Development</a>
+                    <a class="navbar-item" href="">Web Design (Ui Design)</a>
+                    <a class="navbar-item" href="">Video Projects</a>
+                    <a class="navbar-item" href="">Fullstack Development</a>
+                    <a class="navbar-item" href="">Drone Videography</a>
+                </div>
+            </div>
+            <a class="navbar-item" href=""><span>Certificates</span></a>
+            <a class="navbar-item" href=""><span>Photos</span></a>
+            <a class="navbar-item" href=""><span>Blog</span></a>
+            <a class="navbar-item" href=""><span>Socials</span></a>
+            <a class="navbar-item" href=""><span>Real Estate</span></a>
+        </div>
+    </div>
+</nav>
+
+<style>
+    .navbar {
+        position: sticky;
+        top: 0;
+        z-index: 1000;
+        background-color: black;
+        transition: background-color 0.3s ease, color 0.3s ease;
+    }
+
+    /* Default white text color for navbar items */
+    .navbar .navbar-item, .navbar h3, .navbar #statusText {
+        color: white !important;
+    }
+
+    /* When navbar is scrolled, change background and text color */
+    .navbar.scrolled {
+        background-color: white !important;
+    }
+    .navbar.scrolled .navbar-item, .navbar.scrolled h3, .navbar.scrolled #statusText {
+        color: black !important;
+    }
+</style>
+
+<script>
+    window.addEventListener('scroll', function () {
+        var navbar = document.getElementById('navbar');
+        if (window.scrollY > 50) {
+            navbar.classList.add('scrolled');
+        } else {
+            navbar.classList.remove('scrolled');
+        }
+    });
+
+    function toggleProjects(event) {
+        event.preventDefault();
+        var projectsDropdown = document.getElementById('projectsDropdown');
+        projectsDropdown.style.display = projectsDropdown.style.display === 'none' ? 'block' : 'none';
+    }
+
+    const navbarBurgers = Array.prototype.slice.call(document.querySelectorAll('.navbar-burger'), 0);
+    navbarBurgers.forEach(function (el) {
+        el.addEventListener('click', function () {
+            const target = el.dataset.target;
+            const $target = document.getElementById(target);
+            el.classList.toggle('is-active');
+            $target.classList.toggle('is-active');
+        });
+    });
+</script>
